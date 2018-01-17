@@ -6,11 +6,11 @@ import PlaygroundSupport
 PlaygroundPage.current.needsIndefiniteExecution = true
 
 struct PhotoInfo {
-    var id: String
+    var id: Int
     var name: String
-    var age: String
-    var point: String
-    var capitaine: String
+    var age: Int
+    var point: Double
+    var capitaine: Bool
     
     
     init?(json: [String: String]){
@@ -20,12 +20,11 @@ struct PhotoInfo {
             let age = json["age"],
             let point = json["point"],
         let capitaine = json["capitaine"] else {return nil}
-        self.id = id
+        self.id = Int(id)!
         self.name = name
-        self.age = age
-        self.point = point
-        self.capitaine = capitaine
-        
+        self.age = Int(age)!
+        self.point = Double(point)!
+        self.capitaine = ((capitaine == "1" ) ? Bool("true")! : Bool("false")!)
         
     }
 }
